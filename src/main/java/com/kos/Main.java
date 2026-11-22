@@ -1,16 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- */
-
 package com.kos;
 
-/**
- *
- * @author USER
- */
+import com.kos.ui.MainFrame;
+
 public class Main {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        MainFrame.jalankan(args);
     }
 }
