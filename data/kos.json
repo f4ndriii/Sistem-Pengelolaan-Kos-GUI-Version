@@ -1,0 +1,180 @@
+{
+  "versi": 1,
+  "kamar": [
+    {
+      "id": 1,
+      "jenis": "Standard",
+      "nomor": "102",
+      "hargaDasar": 800000,
+      "lokasi": "daftar",
+      "terisi": false,
+      "penyewaId": null,
+      "jatuhTempo": null,
+      "tagihan": null
+    },
+    {
+      "id": 2,
+      "jenis": "Standard",
+      "nomor": "101",
+      "hargaDasar": 800000,
+      "lokasi": "daftar",
+      "terisi": true,
+      "penyewaId": 1,
+      "jatuhTempo": "2027-02-22",
+      "tagihan": null
+    },
+    {
+      "id": 3,
+      "jenis": "Standard",
+      "nomor": "103",
+      "hargaDasar": 800000,
+      "lokasi": "daftar",
+      "terisi": true,
+      "penyewaId": 2,
+      "jatuhTempo": "2026-11-25",
+      "tagihan": null
+    },
+    {
+      "id": 4,
+      "jenis": "Premium",
+      "nomor": "201",
+      "hargaDasar": 1200000,
+      "biayaFasilitas": 300000,
+      "lokasi": "daftar",
+      "terisi": true,
+      "penyewaId": 3,
+      "jatuhTempo": "2026-11-17",
+      "tagihan": null
+    },
+    {
+      "id": 5,
+      "jenis": "Premium",
+      "nomor": "202",
+      "hargaDasar": 1200000,
+      "biayaFasilitas": 300000,
+      "lokasi": "daftar",
+      "terisi": false,
+      "penyewaId": null,
+      "jatuhTempo": null,
+      "tagihan": null
+    },
+    {
+      "id": 6,
+      "jenis": "Premium",
+      "nomor": "203",
+      "hargaDasar": 1200000,
+      "biayaFasilitas": 400000,
+      "lokasi": "daftar",
+      "terisi": true,
+      "penyewaId": 4,
+      "jatuhTempo": "2026-12-22",
+      "tagihan": null
+    },
+    {
+      "id": 7,
+      "jenis": "Standard",
+      "nomor": "104",
+      "hargaDasar": 800000,
+      "lokasi": "sampah",
+      "waktuDihapus": "2026-11-22T20:47:38.827507400",
+      "terisi": false,
+      "penyewaId": null,
+      "jatuhTempo": null,
+      "tagihan": null
+    }
+  ],
+  "penyewa": [
+    {
+      "id": 1,
+      "nik": "3271010101010001",
+      "nama": "Siti Rahayu",
+      "kontak": "081234567801",
+      "kamarId": 2,
+      "tanggalMasuk": "2026-11-22",
+      "tanggalKeluar": null
+    },
+    {
+      "id": 2,
+      "nik": "3271010101010002",
+      "nama": "Budi Santoso",
+      "kontak": "081234567802",
+      "kamarId": 3,
+      "tanggalMasuk": "2026-10-25",
+      "tanggalKeluar": null
+    },
+    {
+      "id": 3,
+      "nik": "3271010101010003",
+      "nama": "Andi Pratama",
+      "kontak": "081234567803",
+      "kamarId": 4,
+      "tanggalMasuk": "2026-09-17",
+      "tanggalKeluar": null
+    },
+    {
+      "id": 4,
+      "nik": "3271010101010004",
+      "nama": "Dewi Lestari",
+      "kontak": "081234567804",
+      "kamarId": 6,
+      "tanggalMasuk": "2026-11-22",
+      "tanggalKeluar": null
+    },
+    {
+      "id": 5,
+      "nik": "128747635625",
+      "nama": "Raysa Putri",
+      "kontak": "012347856673",
+      "kamarId": 7,
+      "tanggalMasuk": "2026-10-23",
+      "tanggalKeluar": "2026-11-22"
+    }
+  ],
+  "pembayaran": [
+    {
+      "penyewaId": 1,
+      "kamarId": 2,
+      "jumlahBulan": 3,
+      "nominal": 2400000,
+      "tanggalBayar": "2026-11-22",
+      "jatuhTempoBerikutnya": "2027-02-22",
+      "sisaSetelahBayar": 0
+    },
+    {
+      "penyewaId": 2,
+      "kamarId": 3,
+      "jumlahBulan": 1,
+      "nominal": 800000,
+      "tanggalBayar": "2026-10-25",
+      "jatuhTempoBerikutnya": "2026-11-25",
+      "sisaSetelahBayar": 0
+    },
+    {
+      "penyewaId": 3,
+      "kamarId": 4,
+      "jumlahBulan": 2,
+      "nominal": 3000000,
+      "tanggalBayar": "2026-09-17",
+      "jatuhTempoBerikutnya": "2026-11-17",
+      "sisaSetelahBayar": 0
+    },
+    {
+      "penyewaId": 4,
+      "kamarId": 6,
+      "jumlahBulan": 1,
+      "nominal": 1600000,
+      "tanggalBayar": "2026-11-22",
+      "jatuhTempoBerikutnya": "2026-12-22",
+      "sisaSetelahBayar": 0
+    },
+    {
+      "penyewaId": 5,
+      "kamarId": 7,
+      "jumlahBulan": 1,
+      "nominal": 800000,
+      "tanggalBayar": "2026-10-23",
+      "jatuhTempoBerikutnya": "2026-11-23",
+      "sisaSetelahBayar": 0
+    }
+  ]
+}
