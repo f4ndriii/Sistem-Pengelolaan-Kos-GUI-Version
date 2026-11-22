@@ -9,5 +9,5 @@ package com.kos.model;
  * @author USER
  */
 public interface InfoDetail {
-    
+    String getRingkasanDetail();
 }
