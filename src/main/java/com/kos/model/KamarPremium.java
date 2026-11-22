@@ -1,27 +1,19 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.kos.model;
 
-/**
- *
- * @author USER
- */
 public class KamarPremium extends Kamar {
-    private double biayaFasilitasTambahan;
+    private double biayaFasilitas;
 
-    public KamarPremium(String nomorKamar, double hargaDasar, double biayaFasilitasTambahan) {
+    public KamarPremium(String nomorKamar, double hargaDasar, double biayaFasilitas) {
         super(nomorKamar, hargaDasar);
-        this.biayaFasilitasTambahan = biayaFasilitasTambahan;
+        this.biayaFasilitas = biayaFasilitas;
     }
 
-    public double getBiayaFasilitasTambahan() {
-        return biayaFasilitasTambahan;
+    public double getBiayaFasilitas() {
+        return biayaFasilitas;
     }
 
-    public void setBiayaFasilitasTambahan(double biayaFasilitasTambahan) {
-        this.biayaFasilitasTambahan = biayaFasilitasTambahan;
+    public void setBiayaFasilitas(double biayaFasilitas) {
+        this.biayaFasilitas = biayaFasilitas;
     }
 
     @Override
@@ -31,23 +23,19 @@ public class KamarPremium extends Kamar {
 
     @Override
     public double getTarifPerBulan() {
-        return getHargaDasar() + biayaFasilitasTambahan;
+        return getHargaDasar() + biayaFasilitas;
     }
 
     @Override
     public double hitungHargaTotal(int jumlahBulan) {
-        if (jumlahBulan <= 0) {
-            return 0;
-        }
+        periksaJumlahBulan(jumlahBulan);
         return getTarifPerBulan() * jumlahBulan;
     }
 
     @Override
-    public String getRingkasanDetail() {
-        String status = isTerisi() ? "Terisi (" + getPenyewaAktif().getNama() + ")" : "Kosong";
-        return "Kamar " + getNomorKamar() + " [" + getJenisKamar() + "] - Status: " + status
-                + " - Tarif/bln: Rp" + String.format("%,.0f", getTarifPerBulan())
-                + " (Dasar: Rp" + String.format("%,.0f", getHargaDasar())
-                + " + Fasilitas: Rp" + String.format("%,.0f", biayaFasilitasTambahan) + ")";
+    public String getInfoDetail() {
+        return "Kamar " + getNomorKamar() + " (Premium) - tarif Rp"
+                + String.format("%,.0f", getTarifPerBulan()) + "/bulan (termasuk fasilitas Rp"
+                + String.format("%,.0f", biayaFasilitas) + ")";
     }
 }

@@ -1,69 +1,62 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.kos.model;
 
 import java.time.LocalDate;
 
-/**
- *
- * @author USER
- */
 public class Penyewa implements InfoDetail {
-    private final String idPenyewa;
-    private String nama;
-    private String kontak;
-    private Kamar kamarSewa;
-    private LocalDate tanggalMasuk;
+    private final String nik;
+    private final String nama;
+    private final String kontak;
+    private final Kamar kamar;
+    private final LocalDate tanggalMasuk;
+    private LocalDate tanggalKeluar;
 
-    public Penyewa(String idPenyewa, String nama, String kontak, Kamar kamarSewa, LocalDate tanggalMasuk) {
-        this.idPenyewa = idPenyewa;
+    public Penyewa(String nik, String nama, String kontak, Kamar kamar, LocalDate tanggalMasuk) {
+        this.nik = nik;
         this.nama = nama;
         this.kontak = kontak;
-        this.kamarSewa = kamarSewa;
+        this.kamar = kamar;
         this.tanggalMasuk = tanggalMasuk;
     }
 
-    public String getIdPenyewa() {
-        return idPenyewa;
+    public String getNik() {
+        return nik;
     }
 
     public String getNama() {
         return nama;
     }
 
-    public void setNama(String nama) {
-        this.nama = nama;
-    }
-
     public String getKontak() {
         return kontak;
     }
 
-    public void setKontak(String kontak) {
-        this.kontak = kontak;
-    }
-
-    public Kamar getKamarSewa() {
-        return kamarSewa;
-    }
-
-    public void setKamarSewa(Kamar kamarSewa) {
-        this.kamarSewa = kamarSewa;
+    public Kamar getKamar() {
+        return kamar;
     }
 
     public LocalDate getTanggalMasuk() {
         return tanggalMasuk;
     }
 
-    public void setTanggalMasuk(LocalDate tanggalMasuk) {
-        this.tanggalMasuk = tanggalMasuk;
+    public LocalDate getTanggalKeluar() {
+        return tanggalKeluar;
+    }
+
+    public boolean isAktif() {
+        return tanggalKeluar == null;
+    }
+
+    public void keluar(LocalDate tanggal) {
+        this.tanggalKeluar = tanggal;
     }
 
     @Override
-    public String getRingkasanDetail() {
-        String noKamar = (kamarSewa != null) ? kamarSewa.getNomorKamar() : "-";
-        return nama + " (ID: " + idPenyewa + ") - Kamar: " + noKamar + " - Kontak: " + kontak;
+    public String getInfoDetail() {
+        return nama + " (ID/NIK " + nik + ", kontak " + kontak + ")";
+    }
+
+    @Override
+    public String toString() {
+        return nama;
     }
 }
