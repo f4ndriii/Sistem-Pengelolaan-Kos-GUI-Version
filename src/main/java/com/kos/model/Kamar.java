@@ -1,21 +1,14 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.kos.model;
 
 import java.time.LocalDate;
 
-/**
- *
- * @author USER
- */
 public abstract class Kamar implements InfoDetail {
     private final String nomorKamar;
     private double hargaDasar;
     private boolean terisi;
     private Penyewa penyewaAktif;
     private LocalDate tanggalJatuhTempo;
+    private Tagihan tagihanAktif;
 
     public Kamar(String nomorKamar, double hargaDasar) {
         this.nomorKamar = nomorKamar;
@@ -23,6 +16,7 @@ public abstract class Kamar implements InfoDetail {
         this.terisi = false;
         this.penyewaAktif = null;
         this.tanggalJatuhTempo = null;
+        this.tagihanAktif = null;
     }
 
     public abstract String getJenisKamar();
@@ -30,6 +24,46 @@ public abstract class Kamar implements InfoDetail {
     public abstract double getTarifPerBulan();
 
     public abstract double hitungHargaTotal(int jumlahBulan);
+
+    public void tempati(Penyewa penyewa, LocalDate jatuhTempo) {
+        if (terisi) {
+            throw new IllegalStateException("Kamar " + nomorKamar + " sudah terisi.");
+        }
+        this.penyewaAktif = penyewa;
+        this.tanggalJatuhTempo = jatuhTempo;
+        this.terisi = true;
+    }
+
+    public Penyewa kosongkan() {
+        if (!terisi) {
+            throw new IllegalStateException("Kamar " + nomorKamar + " sudah kosong.");
+        }
+        Penyewa lama = penyewaAktif;
+        this.penyewaAktif = null;
+        this.tanggalJatuhTempo = null;
+        this.tagihanAktif = null;
+        this.terisi = false;
+        return lama;
+    }
+
+    public StatusJatuhTempo getStatusJatuhTempo(LocalDate hariIni) {
+        if (!terisi) {
+            return null;
+        }
+        return StatusJatuhTempo.hitung(tanggalJatuhTempo, hariIni);
+    }
+
+    public boolean isBelumLunas() {
+        return terisi && tagihanAktif != null && !tagihanAktif.isLunas();
+    }
+
+    public Tagihan getTagihanAktif() {
+        return tagihanAktif;
+    }
+
+    public void setTagihanAktif(Tagihan tagihanAktif) {
+        this.tagihanAktif = tagihanAktif;
+    }
 
     public String getNomorKamar() {
         return nomorKamar;
@@ -65,5 +99,11 @@ public abstract class Kamar implements InfoDetail {
 
     public void setTanggalJatuhTempo(LocalDate tanggalJatuhTempo) {
         this.tanggalJatuhTempo = tanggalJatuhTempo;
+    }
+
+    protected static void periksaJumlahBulan(int jumlahBulan) {
+        if (jumlahBulan < 1) {
+            throw new IllegalArgumentException("Durasi sewa minimal 1 bulan.");
+        }
     }
 }
